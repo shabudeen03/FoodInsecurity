@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> <!--Ensure all characters/symbols encoded properly to prevent data loss-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- for flexibility on different screens and sizes-->
+        <title>Food Insecurity - Recipes</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/recipes.css">
+    </head>
+
+    <body>
+        <%- include("../partials/header") %>
+
+        <div class="recipes-main">
+            <br />
+            <div class="recipes-header">
+                <button type="button"><a href="/recipes/add">Create a new Recipe!</a></button>
+            </div>
+
+            <br />
+
+            <div class="recipes-grid">
+                <% for(let i=0; i<rows.length; i++) { %>
+                    <%- include("../partials/recipe", { recipe: rows[i] }) %>
+                <% } %>
+            </div>
+        </div>
+
+        <%- include("../partials/footer") %>
+    </body>
+</html>

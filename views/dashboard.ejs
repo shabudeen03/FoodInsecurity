@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> <!--Ensure all characters/symbols encoded properly to prevent data loss-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- for flexibility on different screens and sizes-->
+        <title>Food Insecurity - Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/dashboard.css"> 
+    </head>
+
+    <body>
+        <%- include("partials/header") %>
+        <section>
+            <div>
+                <h1>Stony Brook University Food Pantry</h1>
+                <h2>Inventory</h2>
+                <div>
+                    <button id="dashboard_filter_toggle" onclick="toggleFilters()">Filter</button>
+                    <!--<button id="dashboard_change_pantry">Change Pantry</button>-->
+                </div>
+            </div>
+
+            <div id="filters">
+                <hr> 
+                <h2>Filters</h2>
+                <h3>Find What You Want</h3>
+                <div class="dashboard_filter_box">
+                    <form id="filter_presets" method="/dashboard">
+                        <div class="dashboard_filter_container">
+                            <label>Item Name</label> <br>
+                            <input type="text" id="dash_name_search" name="dash_name_search">
+                            <p><span class="tooltip" id="dash_search_tooltip"><img class="dash_info_icon" src="/images/dashboard/informational.png"><span class="tooltip_text" id="dash_search_tooltip_text">Enter item name, which matches name against the Item Name column. </span></span> Search:</p>
+                            <div id="dashboard_search_filter">
+                                <%= filterName %>
+                            </div>
+                        </div>
+
+                        <div class="dashboard_filter_container">
+                            <label>Item Quantity</label> <br>
+                            <input type="text" id="dash_qty_search" name="dash_qty_search">
+                            <p><span class="tooltip" id="dash_qty_tooltip"><img class="dash_info_icon" src="/images/dashboard/informational.png"><span class="tooltip_text"  id="dash_qty_tooltip_text">Enter a number only to specify minimum quantity that you are looking for.</span></span> Minimum:</p>
+                            <div id="dashboard_qty_filter">
+                                <%= filterQty %>
+                            </div>
+                        </div>
+
+                        <div class="dashboard_filter_container">
+                            <label>Item Description</label> <br>
+                            <input type="text" id="dash_desc_search" name="dash_desc_search">
+                            <p><span class="tooltip" id="dash_desc_tooltip"><img class="dash_info_icon" src="/images/dashboard/informational.png"><span class="tooltip_text"  id="dash_desc_tooltip_text">Enter keywords separated by space to match against item description.</span></span> Tags:</p>
+                            <div id="dashboard_desc_filter">
+                                <%= filterDesc %>
+                            </div>
+                        </div>
+                        <br> <br>
+                        <div class="dashboard_filter_container">
+                            <button type="button"><a href=<%= "/dashboard/" + user.pantryid %>>Clear Filters</a></button>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <%- include('partials/getErrors', { errors: errors }) %>
+
+            <hr>
+
+            <div>
+                <div class="inline_element dashboard_matches_title">Search Results: </div> <br>
+                <table id="dashboard_table">
+                    <tr>
+                        <th>Item</th>
+                        <th>ID</th>
+                        <th>Quantity</th>
+                        <th>Description</th>
+                    </tr>
+                    <% for(let i=0; i<items.length; i++) { %>
+                        <tr class="dashboard_table_row">
+                            <td class="row-cell"><%- items[i].name %></td>
+                            <td class="row-cell"><%- items[i].id %></td>
+                            <td class="row-cell"><%- items[i].quantity %></td>
+                            <td class="row-cell"><%- items[i].description %></td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </section>
+        <%- include("partials/footer") %>
+
+        <script>
+            function toggleFilters() {
+                const filterTag = document.getElementById("filters");
+                if(filterTag.style.display === 'none') filterTag.style.display = 'block';
+                else filterTag.style.display = 'none';
+            }
+        </script>
+    </body>
+</html>

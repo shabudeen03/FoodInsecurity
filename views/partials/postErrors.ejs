@@ -1,0 +1,10 @@
+<br />
+<% if(errors.length > 0) { %>
+    <div class="filter_errors_post">
+        <ul>
+            <% for(let i=0; i<errors.length; i++) { %>
+                <li><%= errors[i].msg %></li>
+            <% } %>
+        </ul>
+    </div>
+<% } %>

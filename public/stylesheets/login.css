@@ -1,0 +1,29 @@
+.auth_text {
+    margin-top: 7%;
+}
+
+.register_form {
+    border: solid;
+    display: inline-block;
+    border-radius: 3%;
+    border-width: 1px;
+    padding: 0.5% 3%;
+}
+
+#fname, #lname, #uname, #email, #cpass, #repass  {
+    float: left;
+}
+
+.auth_form_labels {
+    font-weight: bolder;
+    padding-left: 1%;
+}
+
+.register_form_name {
+    display: inline-block;
+}
+
+.auth_input {
+    padding: 1% 1%;
+    margin: 1% 1%;
+}

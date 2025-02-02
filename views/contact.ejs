@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> <!--Ensure all characters/symbols encoded properly to prevent data loss-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- for flexibility on different screens and sizes-->
+        <title>Food Insecurity - Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="./stylesheets/index.css">
+        <link rel="stylesheet" type="text/css" href="./stylesheets/contact.css"> 
+    </head>
+
+    <body style="text-align: center;">
+        <%- include("partials/header") %>
+
+        <h1>CONTACT US!</h1>
+
+        <form method="POST" action="/contact">
+            <h2>Reason for Contact</h2>
+
+            <button type="button" style="width: 400px; height: 40px" onclick="showOptions()">
+                <div id="dropdown-text" style="display: inline-block"></div>
+                <img id="dropdown-img" src="/images/dropdown.png" />
+            </button>
+
+            <br />
+
+            <div id="dropdown">
+                <div class="dropdown-sub">Technical Issues</div>
+                <div class="dropdown-sub">Questions About Website</div>
+                <div class="dropdown-sub">Request for Features</div>
+                <div class="dropdown-sub">Complaint</div>
+                <div class="dropdown-sub">Other</div>
+            </div>
+
+            <!-- <input id="title" name="title" style="font-size: 30px; padding: 5px 20px"/> -->
+    
+            <br />
+    
+            <h2>Message</h2>
+            <textarea rows="20" cols="120" id="text" name="text" style="margin-bottom: 20px"></textarea>
+
+            <br />
+    
+            <button type="button" onclick="sendMessage()">Post</button>
+        </form>
+
+        <%- include("partials/footer") %>
+
+        <script>
+            function initializeTitle(idx) {
+                let val = "";
+                switch(idx) {
+                    case 0: val = "Technical Issues"; break;
+                    case 1: val = "Questions About Website"; break;
+                    case 2: val = "Request for Features"; break;
+                    case 3: val = "Complaint"; break;
+                    default: val = "Other"; break;
+                }
+
+                document.getElementById("dropdown-text").innerText = val;
+                document.getElementById("dropdown").style.display = "none";
+            }
+
+            function showOptions() {
+                let tag = document.getElementById("dropdown");
+                let img = document.getElementById('dropdown-img');
+                if(tag.style.display === "inline-block") {
+                    tag.style.display = "none";
+                    img.src = "http://localhost:3000/images/dropdown.png"
+                } else {
+                    tag.style.display = "inline-block";
+                    img.src = "http://localhost:3000/images/dropup.png"
+                }
+
+                let subtags = document.getElementsByClassName("dropdown-sub");
+                for(let i=0; i<subtags.length; i++) {
+                    subtags[i].addEventListener("click", () => initializeTitle(i));
+                }
+            }
+
+            async function sendMessage() {
+                let title = document.getElementById("dropdown-text").innerText;
+                let text = document.getElementById("text").value;
+
+                if(title.length === 0 || text.length === 0) {
+                    return alert("Message must contain a reason and details.");
+                }
+
+                const formData = { title: title, text: text };
+                console.log(formData);
+
+                const response = await fetch("http://localhost:3000/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData)
+                });
+
+                if(response.redirected) window.location.href = response.url;
+            }
+        </script>
+    </body>
+</html>

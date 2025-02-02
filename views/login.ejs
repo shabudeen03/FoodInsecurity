@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> <!--Ensure all characters/symbols encoded properly to prevent data loss-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- for flexibility on different screens and sizes-->
+        <title>Food Insecurity - Login to your Account</title>
+        <link rel="stylesheet" type="text/css" href="./stylesheets/index.css">
+        <link rel="stylesheet" type="text/css" href="./stylesheets/login.css"> 
+    </head>
+
+    <body>
+        <%- include("partials/header") %>
+        <section>
+            <div class="auth_text">
+                <h1>Login</h1>
+            </div>
+    
+            <form class="register_form" method="POST">
+                <br>
+                <label class="auth_form_labels register_form_label_uname" style="float:left;">Username / Email</label><br>
+                <input class="auth_input" type="text" id="uename" name="uename" value="">
+                
+                <br> <br>
+                <label class="auth_form_labels" style="float:left;">Password</label><br>
+                <input class="auth_input" type="text" id="passwd" name="passwd" value="">
+
+                <br> <br>
+                <!-- <button class=" cancel_btn auth_input" formaction="/" formmethod="post">Cancel</button> -->
+                <button class="cancel_btn auth_input" type="button"><a href="/">Cancel</a></button>
+                <button class="auth_input" type="submit">Submit</button>
+                <br> <br>
+            </form>
+
+            <%- include('partials/postErrors', { errors: errors }) %>
+        </section>
+        <%- include("partials/footer") %>
+    </body>
+</html>

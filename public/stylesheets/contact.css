@@ -1,0 +1,25 @@
+#dropdown {
+    margin-top: 5px;
+    background-color: #dfdfdf;
+    width: 400px;
+    display: none;
+}
+
+.dropdown-sub {
+    font-family: inherit;
+    border: 1px solid #aaaaaa;
+    padding: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dropdown-sub:hover {
+    background-color: #aaaaaa;
+}
+
+#dropdown-img {
+    width: 20px; 
+    float: right; 
+    margin-top: 1%;
+    height: 20px;
+}

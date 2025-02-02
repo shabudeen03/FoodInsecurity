@@ -1,0 +1,22 @@
+.profile-meta {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.regress-btns {
+    align-self: flex-end;
+}
+
+.regress-btns button {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border: 5px solid white;
+}
+
+.regress-btns button:hover {
+    border-color: red;
+}

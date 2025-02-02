@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> <!--Ensure all characters/symbols encoded properly to prevent data loss-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- for flexibility on different screens and sizes-->
+        <title>Food Insecurity - Welcome</title>
+        <link rel="stylesheet" href="./stylesheets/index.css" type="text/css">
+        <link rel="stylesheet" href="./stylesheets/welcome.css" type="text/css"> 
+    </head>
+
+    <body>
+        <%- include("partials/header", { user: locals.user }) %>
+        <section class="welcome-top"> <!--Welcome-->
+            <h1>Welcome to Fi Security</h1>
+            <p class="welcome_title_meta">We are a non-profit dealing with the problem of Food Insecurity in American households, providing ease of access and services to both food insecure households and organizations.</p>
+            <div class="inline_element">
+                <% if(locals.user) { %>
+                <button class="logout_btn">
+                    <a href="/logout">Logout</a>
+                </button>
+                <% } else { %>
+                <button class="register_btn">
+                    <a href="/register">Register</a>
+                </button>
+                <button class="login_btn">
+                    <a href="/login">Login</a>
+                </button>
+                <% } %>
+            </div>
+
+            <div class="welcome_images">
+                <img class="welcome_image" src="./images/welcome/img_1.png">
+                <img class="welcome_image" src="./images/welcome/img_2.png">
+                <img class="welcome_image" src="./images/welcome/img_3.png">
+            </div>
+        </section>
+
+        <section class="features"> <!--Features-->
+            <div class="features_list_title"><h3>Features</h3></div>
+            <p class="features_list_paragraph">We streamline the processes to help solve the problems and logistics of food insecurity.</p>
+            <div class="feature_list">
+                <div class="feature_container">
+                    <div class="feature_panel"><img class="welcome_icon" src="./images/welcome/feature_icon.png"></div>
+                    <div class="feature_text">
+                        <div class="feature_title">Find a Food Pantry</div>
+                        <div class="feature_content">Locate nearby food pantries                                quickly with our easy-to-use
+                            tool, helping individuals and
+                            families access nutritious food
+                            when they need it most, in a
+                            matter of seconds.</div>
+                    </div>
+                </div>
+
+                <div class="feature_container">
+                    <div class="feature_panel"><img class="welcome_icon" src="./images/welcome/feature_icon.png"></div>
+                    <div class="feature_text">
+                    <div class="feature_title">Inventory</div>
+                    <div class="feature_content">See what’s in stock at local
+                                pantries. This feature helps you
+                                find exactly what you need and
+                                ensures that donated items are
+                                utilized efficiently, improving
+                                access for everyone.</div>
+                    </div>
+                </div>
+
+                <div class="feature_container">
+                    <div class="feature_panel"><img class="welcome_icon" src="./images/welcome/feature_icon.png"></div>
+                    <div class="feature_text">
+                        <div class="feature_title">Live Heatmap</div>
+                        <div class="feature_content">Our real-time heatmap shows
+                                pantry locations and current
+                                activity, so you can make informed
+                                decisions about when and where
+                                to visit, reducing wait times by
+                                helping you plan your trip.</div>
+                    </div>
+                </div>
+
+                <div class="feature_container">
+                    <div class="feature_panel"><img class="welcome_icon" src="images/welcome/feature_icon.png"></div>
+                    <div class="feature_text">
+                        <div class="feature_title">AI Powered Recipes</div>
+                        <div class="feature_content">Get creative with what’s available!
+                                Our AI-powered recipe generator
+                                suggests delicious, healthy meals
+                                based on the ingredients you
+                                have, minimizing waste and
+                                making the most of pantry items.
+                                Personalized for everyone!</div>
+                    </div>
+                </div>
+
+                <div class="feature_container">
+                    <div class="feature_panel"><img class="welcome_icon" src="images/welcome/feature_icon.png"></div>
+                    <div class="feature_text">
+                        <div class="feature_title">News Updates</div>
+                        <div class="feature_content">Stay up-to-date on food security
+                                initiatives, community events, and
+                                important changes in local pantry
+                                services.Keep yourself informed
+                                and connected to the latest
+                                developments in the fight against
+                                hunger.</div>
+                    </div>
+                </div>
+
+                <div class="feature_container">
+                    <div class="feature_panel"><img class="welcome_icon" src="images/welcome/feature_icon.png"></div>
+                    <div class="feature_text">
+                        <div class="feature_title">Resources</div>
+                        <div class="feature_content">Access a variety of helpful
+                                resources, from nutrition guides
+                                to community support programs.
+                                With resources at your fingertips,
+                                this feature empowers individuals
+                                with information that enhances
+                                well-being and security.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include("partials/footer") %>
+    </body>
+</html>

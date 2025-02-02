@@ -1,0 +1,48 @@
+.recipes-grid {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.recipe-sub {
+    border: 2px solid black;
+    display: inline-block;
+    padding: 20px;
+    margin: 10px;
+    font-size: 20px;
+    width: 200px;
+}
+
+.recipe-sub:hover {
+    background-color: yellowgreen;
+}
+.recipe-sub .title {
+    font-size: 30px;
+}
+
+.viewRecipe-body {
+    font-size: 20px;
+}
+
+.viewRecipe-body .title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.viewRecipe-body .text {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.viewRecipe-body .uname {
+    font-style: italic;
+}
+
+.viewRecipe-body .date {
+    margin-bottom: 50px;
+}

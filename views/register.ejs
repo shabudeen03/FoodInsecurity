@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> <!--Ensure all characters/symbols encoded properly to prevent data loss-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- for flexibility on different screens and sizes-->
+        <title>Food Insecurity - Register an Account</title>
+        <link rel="stylesheet" type="text/css" href="./stylesheets/index.css">
+        <link rel="stylesheet" type="text/css" href="./stylesheets/register.css"> 
+    </head>
+
+    <body>
+        <%- include("partials/header") %>
+        <section>
+            <div class="auth_text">
+                <h1>Register</h1>
+                <h2>Personalize Your Use</h2>
+            </div>
+    
+            <form class="register_form" method="POST" action="/register">
+                <br>
+                <div class="register_form_names">
+                    <div class="register_form_name">
+                        <label class="auth_form_labels">First Name: </label> <br>
+                        <input class="auth_input" type="text" id="fname" name="fname" placeholder="first name..." required />
+                    </div>
+                
+                    <div class="register_form_name">
+                        <label class="auth_form_labels">Last Name: </label> <br>
+                        <input class="auth_input" type="text" id="lname" name="lname" placeholder="last name..." required />
+                    </div>
+                </div>
+
+
+                <br>
+                <label class="auth_form_labels register_form_label_uname" style="float:left;">Username</label><br>
+                <input class="auth_input" type="text" id="uname" name="uname" placeholder="enter your username" required />
+                
+                <br> <br>
+                <label class="auth_form_labels" style="float:left;">Email</label><br>
+                <input class="auth_input" type="text" id="email" name="email" placeholder="email@example.com" required />
+
+                <br> <br> <br>
+                <label class="auth_form_labels" style="float:left;">Create Password</label> <br>
+                <input class="auth_input" type="text" id="cpass" name="cpass" required /> <br> <br>
+
+                <label class="auth_form_labels" style="float:left;">Re-enter Password</label> <br>
+                <input class="auth_input" type="text" id="repass" name="repass" required />
+                <br> <br>
+                <button class="cancel_btn auth_input" type="button"><a href="/">Cancel</a></button>
+                <button class="auth_input" type="submit">Submit</button>
+                <br> <br>
+            </form>
+
+            <%- include('partials/postErrors', { errors: errors }) %>
+        </section>
+        <%- include("partials/footer") %>
+    </body>
+</html>

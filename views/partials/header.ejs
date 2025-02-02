@@ -1,0 +1,54 @@
+<header class="header">
+    <div class="site-header_wrapper">
+        <div class="inline_element logo">
+            <a href="/"><img id="logo" src="/images/logo.png"></a>
+        </div>
+
+        <div class="inline_element nav_btns">
+            <div class="inline_element top_nav">
+                <% if(locals.user) { %>
+                <div class="inline_element" id="tab_home">
+                    <a class="nav_link" href=<%= "/dashboard/"  + user.pantryid %>>Dashboard</a>
+                </div>
+                <!-- <div class="inline_element" id="tab_heatmap">
+                    <a class="nav_link" href="/">Heatmap</a>
+                </div> -->
+                <div class="inline_element" id="tab_recipes">
+                    <a class="nav_link" href="/recipes">Recipes</a>
+                </div>
+                <!-- <div class="inline_element" id="tab_resources">
+                    <a class="nav_link" href="/">Resources</a>
+                </div> -->
+                <% }  %>
+                <div class="inline_element">
+                    <a class="nav_link" href="/">About</a>
+                </div>
+
+                <div class="inline_element" id="tab_contact">
+                    <a class="nav_link" href="/contact">Contact</a>
+                </div>
+            </div>
+
+            <div class="inline_element">
+                <% if(locals.user) { %>
+                <div class="inline_element" id="profile-pic">
+                    <a href="/profile"><img class="logo" src="/images/default_profile.png"></a>
+                </div>
+
+                <div class="inline_element">
+                    <a class="auth_btns" id="logout_btn" href="/logout">Logout</a>
+                </div>
+
+                <% } else { %>
+                <div class="inline_element">
+                    <a class="auth_btns" id="register_btn" href="/register">Register</a>
+                </div>
+
+                <div class="inline_element">
+                    <a class="auth_btns" id="login_btn" href="/login">Login</a>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</header>

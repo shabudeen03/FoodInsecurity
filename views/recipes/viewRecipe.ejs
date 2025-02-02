@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> <!--Ensure all characters/symbols encoded properly to prevent data loss-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- for flexibility on different screens and sizes-->
+        <title>Food Insecurity - Recipes</title>
+
+        <!-- Remember static css files in express are set by default to be in ./public directory -->
+        <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/recipes.css">
+    </head>
+
+    <body>
+        <%- include("../partials/header") %>
+
+        <br />
+
+        <div class="viewRecipe-body">
+            <div class="title"><%= recipe.title %></div>
+            <div class="text"><%= recipe.text %></div>
+            <div class="uname">By: <%= recipe.username %></div>
+            <% const newDate = recipe.created.toDateString() %>
+            <div class="date">Created on: <%= newDate %></div>
+        </div>
+
+        <a href="/recipes">
+            <button>Go Back</button>
+        </a>
+
+        <a href="/recipes/add">
+            <button>Create a new Recipe</button>
+        </a>
+
+        <br />
+
+        <% if(user.id === recipe.userid) { %>
+            <hr />
+            <a href=<%= "/recipes/delete/" + recipe.id %>>
+                <button>Delete</button>
+            </a>
+        <% } %>
+
+        <%- include("../partials/footer") %>
+    </body>
+</html>
